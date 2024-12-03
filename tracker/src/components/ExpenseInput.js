@@ -3,16 +3,22 @@ import React, { useState } from 'react';
 const ExpenseInput = ({ balance, setBalance, addExpense }) => {
   const [item, setItem] = useState('');
   const [price, setPrice] = useState('');
-  const [category, setCategory] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState(null);
+
+  const categories = ['Grocery', 'Food', 'Shopping', 'Entertainment', 'Bills'];
 
   const handleAddExpense = () => {
-    if (item && price && category) {
-      addExpense({ item, price: parseFloat(price), category });
+    if (item && price && selectedCategory) {
+      addExpense({ item, price: parseFloat(price), category: selectedCategory });
       setBalance(balance - parseFloat(price));
       setItem('');
       setPrice('');
-      setCategory('');
+      setSelectedCategory(null);
     }
+  };
+
+  const handleCategoryClick = (category) => {
+    setSelectedCategory(category);
   };
 
   return (
@@ -33,21 +39,30 @@ const ExpenseInput = ({ balance, setBalance, addExpense }) => {
           onChange={(e) => setPrice(e.target.value)}
         />
       </label>
-      <label>
-        Category:
-        <select
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="">Select Category</option>
-          <option value="Grocery">Grocery</option>
-          <option value="Food">Food</option>
-          <option value="Shopping">Shopping</option>
-          <option value="Entertainment">Entertainment</option>
-          <option value="Bills">Bills</option>
-        </select>
-      </label>
-      <button onClick={handleAddExpense}>Add Expense</button>
+      <div style={{ marginTop: '10px' }}>
+        <p>Select a Category:</p>
+        {categories.map((category) => (
+          <button
+            key={category}
+            style={{
+              margin: '5px',
+              padding: '10px 15px',
+              backgroundColor: selectedCategory === category ? 'blue' : 'lightgreen',
+              color: selectedCategory === category ? 'white' : 'black',
+              border: 'none',
+              borderRadius: '5px',
+              cursor: 'pointer',
+              opacity: selectedCategory === category ? 1 : 0.6,
+            }}
+            onClick={() => handleCategoryClick(category)}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+      <button onClick={handleAddExpense} style={{ marginTop: '10px' }}>
+        Add Expense
+      </button>
     </div>
   );
 };

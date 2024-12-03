@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.expense-table-container {
+  @apply mt-4 p-4 bg-white rounded-lg shadow-md;
+}
+
+.expense-category-group {
+  @apply mb-6;
+}
+
+.category-title {
+  @apply mb-2 text-lg font-semibold text-gray-700;
+}
+
+.expense-table {
+  @apply w-full border border-collapse border-gray-300;
+}
+
+.expense-table th {
+  @apply p-2 border border-gray-300 bg-gray-100 text-gray-700;
+}
+
+.expense-table td {
+  @apply p-2 border border
+}

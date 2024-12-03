@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.expense-input-container {
+  @apply mt-4 p-4 bg-white rounded-lg shadow-md;
+}
+
+.input-group {
+  @apply mb-4;
+}
+
+.input-label {
+  @apply block mb-2 text-sm font-medium text-gray-700;
+}
+
+.input-box {
+  @apply w-full p-2 border border-gray-300 rounded-md;
+}
+
+.categories-container {
+  @apply mt-4;
+}
+
+.categories-title {
+  @apply mb-2 text-sm font-medium text-gray-700;
+}
+
+.categories-buttons {
+  @apply flex flex-wrap gap-2;
+}
+
+.category-button {
+  @apply px-4 py-2 text-sm rounded-lg cursor-pointer;
+}
+
+.selected-category {
+  @apply bg-blue-500 text-white;
+}
+
+.unselected-category {
+  @apply bg-green-300 text-black opacity-60;
+}
+
+.add-expense-button {
+  @apply mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg shadow hover:bg-blue-600;
+}
