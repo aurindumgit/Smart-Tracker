@@ -10,25 +10,27 @@ const ExpenseTable = ({ expenses }) => {
   }, {});
 
   return (
-    <div style={{ marginTop: '20px' }}>
+    <div className="mt-8">
       {expenses.length > 0 ? (
         <div>
-          <h3>Expenses by Category:</h3>
+          <h3 className="text-lg font-bold mb-4">Expenses by Category:</h3>
           {Object.keys(groupedExpenses).map((category) => (
-            <div key={category} style={{ marginBottom: '20px' }}>
-              <h4>{category}</h4>
-              <table border="1" style={{ width: '100%' }}>
+            <div key={category} className="mb-6">
+              <h4 className="text-md font-semibold mb-2">{category}</h4>
+              <table className="w-full border-collapse border border-gray-200">
                 <thead>
-                  <tr>
-                    <th>Item</th>
-                    <th>Price</th>
+                  <tr className="bg-gray-100">
+                    <th className="border border-gray-300 px-4 py-2 text-left">Item</th>
+                    <th className="border border-gray-300 px-4 py-2 text-left">Price</th>
                   </tr>
                 </thead>
                 <tbody>
                   {groupedExpenses[category].map((expense, index) => (
-                    <tr key={index}>
-                      <td>{expense.item}</td>
-                      <td>{expense.price.toFixed(2)}</td>
+                    <tr key={index} className="even:bg-gray-50">
+                      <td className="border border-gray-300 px-4 py-2">{expense.item}</td>
+                      <td className="border border-gray-300 px-4 py-2">
+                        ₹{expense.price.toFixed(2)}
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -37,7 +39,7 @@ const ExpenseTable = ({ expenses }) => {
           ))}
         </div>
       ) : (
-        <p>No expenses added yet.</p>
+        <p className="text-gray-500">No expenses added yet.</p>
       )}
     </div>
   );
