@@ -130,9 +130,11 @@ const ExpenseTracker = () => {
       <ExpenseTable expenses={expenses} />
 
       {/* Pie Chart */}
-      <div className="mt-10">
-        <h3 className="text-lg font-bold mb-4">Expense Distribution:</h3>
-        <Pie data={chartData} />
+      <div className="mt-8">
+        <h3 className="text-lg font-bold mb-4">Expense Distribution</h3>
+        <div style={{ maxWidth: '300px', margin: '0 auto' }}>
+          <Pie data={chartData} />
+        </div>
       </div>
     </div>
   );
